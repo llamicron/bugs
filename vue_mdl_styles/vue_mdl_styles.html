@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vue and MDL Style Bug</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- MDL -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+  <!-- Vue (latest stable) -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="main">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--6-col">
+        <!-- Slider -->
+        <div v-if="showSlider" id="sliderContainer">
+          <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0" tabindex="0">
+        </div>
+        <button @click="showSlider = !showSlider" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+          Toggle Slider
+        </button>
+      </div>
+      <div class="mdl-cell mdl-cell--6-col">
+        <!-- Switch -->
+        <label v-if="showSwitch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+          <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+          <span class="mdl-switch__label"></span>
+        </label>
+        <button @click="showSwitch = !showSwitch" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+          Toggle Switch
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#main',
+      data: {
+        showSlider: true,
+        showSwitch: true
+      }
+    })
+  </script>
+
+</body>
+</html>
